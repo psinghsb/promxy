@@ -900,6 +900,7 @@ func (ev *evaluator) error(err error) {
 
 // recover is the handler that turns panics into returns from the top level of evaluation.
 func (ev *evaluator) recover(ws *storage.Warnings, errp *error) {
+	return
 	e := recover()
 	if e == nil {
 		return
