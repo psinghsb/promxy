@@ -6,8 +6,8 @@ ARG TARGETOS
 ENV GOARCH=${TARGETARCH} GOOS=${TARGETOS}
 
 COPY . /go/src/github.com/jacksontj/promxy
-RUN cd /go/src/github.com/jacksontj/promxy/cmd/promxy && CGO_ENABLED=0 go build -mod=vendor -tags netgo,builtinassets
-RUN cd /go/src/github.com/jacksontj/promxy/cmd/remote_write_exporter && CGO_ENABLED=0 go build -mod=vendor
+RUN cd /go/src/github.com/jacksontj/promxy/cmd/promxy && CGO_ENABLED=0 go build -race -mod=vendor -tags netgo,builtinassets
+RUN cd /go/src/github.com/jacksontj/promxy/cmd/remote_write_exporter && CGO_ENABLED=0 go build -race -mod=vendor
 
 FROM alpine:3.12.1
 MAINTAINER Thomas Jackson <jacksontj.89@gmail.com>
